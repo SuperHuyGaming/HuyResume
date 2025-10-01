@@ -1,0 +1,50 @@
+/* styles.css */
+:root {
+	--container: 1120px;
+	--accent: #ff6d00; /* matches theme.secondary.main */
+}
+
+body {
+	background: radial-gradient(
+			1200px 600px at 10% -10%,
+			rgba(30, 136, 229, 0.15),
+			transparent 60%
+		),
+		radial-gradient(
+			900px 500px at 90% 0%,
+			rgba(255, 109, 0, 0.12),
+			transparent 60%
+		);
+}
+
+.container {
+	max-width: var(--container);
+	margin: 0 auto;
+	padding: 24px;
+}
+
+.accent {
+	color: var(--accent);
+}
+
+.card-glass {
+	border: 1px solid rgba(15, 23, 42, 0.08);
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(8px);
+}
+
+.hero-img {
+	width: 260px;
+	height: 260px;
+	border-radius: 50%;
+	object-fit: cover;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+	border: 6px solid #fff;
+}
+
+@media (max-width: 900px) {
+	.hero-img {
+		width: 200px;
+		height: 200px;
+	}
+}
