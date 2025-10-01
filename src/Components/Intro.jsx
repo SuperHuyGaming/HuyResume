@@ -4,7 +4,7 @@ import { Typography, Button, Stack, Grid, Chip } from "@mui/material";
 import Section from "./Section";
 
 // Point directly to the file in /public
-const PROFILE_SRC = "public/ProfilePic.jpg";
+const PROFILE_SRC = "/ProfilePic.jpg";
 
 export default function Intro() {
 	const go = (id) => (e) => {
@@ -19,7 +19,7 @@ export default function Intro() {
 				<Grid item xs={12} md={7} order={{ xs: 2, md: 1 }}>
 					<Stack spacing={1.25}>
 						<Typography variant="overline" className="accent">
-							Available for internships / freelance
+							Available for internships
 						</Typography>
 
 						<Typography
