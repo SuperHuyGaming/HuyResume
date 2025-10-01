@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Huy Truong Logo">
+  <circle cx="128" cy="128" r="108" fill="none" stroke="black" stroke-width="8"/>
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
+        font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="96">
+    HT
+  </text>
+</svg>
