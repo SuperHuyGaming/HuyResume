@@ -107,7 +107,7 @@ export const featuredProjects = [
 		],
 		tech: ["Python", "React", "Node.js", "AWS Lambda", "DynamoDB", "CloudFront", "Supabase", "Azure AI"],
 		github: "https://github.com/SuperHuyGaming/Syllabus-Searcher",
-		live: "https://d2lwb3ttduhkvw.cloudfront.net/",
+		live: "https://findmysyllabus.bentruong.dev/",
 		video: "/videos/syllabus-demo.mp4",
 		poster: "/videos/syllabus-poster.jpg",
 	},
