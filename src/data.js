@@ -77,37 +77,78 @@ export const experience = [
 	},
 ];
 
-export const projects = [
-	{
-		name: "GMU Syllabus Searcher",
-		blurb:
-			"Find every professor's syllabus for any GMU course since Fall 2022. Python scrapers pulled 1,000+ syllabi; Azure AI Document Intelligence tags student uploads for one-click admin approval; full-text search across every syllabus. Runs on AWS for $0/month.",
-		tech: ["Python", "React", "Node.js", "AWS Lambda", "DynamoDB", "MongoDB", "Azure AI"],
-		github: "https://github.com/SuperHuyGaming/Syllabus-Searcher",
-		featured: true,
-	},
+// Main showcase: each gets a demo video. `live` is where "Open app" points.
+export const featuredProjects = [
 	{
 		name: "Mason Badminton Connect",
+		kicker: "Founder · 500+ active players",
 		blurb:
-			"The hub for GMU badminton: court booking, Glicko-2 leaderboard and doubles matchmaking, an offline-first umpire pad, and an AI tournament finder for the DMV. Production and staging tiers on Render.",
-		tech: ["React", "Express.js", "MongoDB", "Kafka", "Redis", "Gemini API"],
+			"The hub for GMU badminton. Players book RAC courts without double bookings, get paired with doubles partners by a Glicko-2 matchmaking engine, and climb the leaderboard. A Gemini pipeline turns tournament flyers from social media into a searchable DMV tournament calendar.",
+		highlights: [
+			"10,000+ gym events a day streamed through Kafka, live court status cached in Redis",
+			"Gemini API extracts 50+ regional tournaments a semester from flyers",
+			"Production + staging tiers on Render with CI gates; JWT + bcrypt auth",
+		],
+		tech: ["React", "Express.js", "MongoDB", "Kafka", "Redis", "Gemini API", "Glicko-2"],
 		github: "https://github.com/SuperHuyGaming/GMU-Badminton-App",
 		live: "https://gmu-badminton-openplayschedule.onrender.com/",
-		featured: true,
+		video: "/videos/badminton-demo.mp4",
+		poster: "/videos/badminton-poster.jpg",
 	},
 	{
-		name: "Handwritten Digit Classification",
+		name: "GMU Syllabus Searcher",
+		kicker: "1,000+ syllabi · $0/month on AWS",
+		blurb:
+			"Look up any GMU course and see which professors taught it each term since Fall 2022, with their syllabus one click away. AI summaries compare grading and topics across professors, and full-text search finds any phrase inside every syllabus.",
+		highlights: [
+			"Python scrapers pulled 1,000+ syllabi; students upload the missing ones",
+			"Azure AI Document Intelligence + Gemini tag and check uploads for one-click approval",
+			"React on S3 + CloudFront, Node.js on Lambda, DynamoDB single-table design",
+		],
+		tech: ["Python", "React", "Node.js", "AWS Lambda", "DynamoDB", "CloudFront", "Supabase", "Azure AI"],
+		github: "https://github.com/SuperHuyGaming/Syllabus-Searcher",
+		live: "https://d2lwb3ttduhkvw.cloudfront.net/",
+		video: "/videos/syllabus-demo.mp4",
+		poster: "/videos/syllabus-poster.jpg",
+	},
+];
+
+export const aiProjects = [
+	{
+		name: "C Error Tutor",
+		status: "In progress",
+		blurb:
+			"Fine-tuning a small open model with LoRA to explain and fix beginner C compile errors, benchmarked against API models on ~7,000 real student programs from DeepFix. The main metric: does the suggested fix compile?",
+		tech: ["PyTorch", "LoRA", "Transformers", "gcc", "Pandas"],
+	},
+	{
+		name: "AI Bug-Triage Agent",
+		status: "Deepiri",
+		blurb:
+			"A LangGraph agent that reads production error logs, groups them, and uses the OpenAI API to root-cause bugs in a Spring Boot backend — 150+ critical bugs fixed and uptime restored to 99.9%.",
+		tech: ["LangGraph", "OpenAI API", "Spring Boot", "Claude API"],
+	},
+	{
+		name: "AI Debugging Tutor",
+		status: "GMU Research",
+		blurb:
+			"A course chatbot that explains students' homework errors, grounded in course materials with RAG. Clustering logged questions with embeddings shaped prompts for the 5 most common error types and cut debugging time by ~50%.",
+		tech: ["RAG", "Embeddings", "Google AI Studio", "A/B Testing"],
+	},
+	{
+		name: "Tournament Flyer Extraction",
+		status: "Open source",
+		blurb:
+			"An event-driven pipeline that scrapes collegiate badminton Instagram accounts and uses multimodal LLM vision to turn flyers into validated, geocoded tournament records, with self-healing schema retries.",
+		tech: ["GPT-4o Vision", "Pydantic", "Kafka", "Spring Boot", "MongoDB"],
+		github: "https://github.com/SuperHuyGaming/badminton-tournament-finder",
+	},
+	{
+		name: "Handwritten Digit Classifier",
+		status: "ML",
 		blurb:
 			"A PyTorch multi-layer perceptron that reads handwritten digits with 98% accuracy, fed by a scikit-learn + Pandas pipeline that loads, normalizes and splits the image data.",
-		tech: ["Python", "PyTorch", "scikit-learn", "Pandas"],
-	},
-	{
-		name: "NVIS Club Website",
-		blurb:
-			"Website for GMU's Vietnamese student community — authentication, posts and comments, and event media, deployed on Render.",
-		tech: ["React", "Node.js", "MongoDB"],
-		github: "https://github.com/SuperHuyGaming/NVIS-Website",
-		live: "https://nvis-frontend.onrender.com/",
+		tech: ["PyTorch", "scikit-learn", "Pandas"],
 	},
 ];
 
