@@ -1,10 +1,14 @@
 import React from "react";
-import { Box, Container, Typography, Stack, Button, Link, Divider } from "@mui/material";
+import { Container, Typography, Stack, Button, Link, Divider } from "@mui/material";
 import MailOutline from "@mui/icons-material/MailOutline";
 import Section from "./Section";
 import { profile, RESUME_PDF } from "../data";
+import { startVisits } from "../visits";
 
 export default function Contact() {
+	const [total, setTotal] = React.useState(null);
+	React.useEffect(() => startVisits("resume", (d) => setTotal(d.total)), []);
+
 	return (
 		<>
 			<Section id="contact" title="Contact">
@@ -31,11 +35,16 @@ export default function Contact() {
 			</Section>
 			<Container maxWidth="md">
 				<Divider />
-				<Box sx={{ py: 3 }}>
+				<Stack direction="row" justifyContent="space-between" sx={{ py: 3 }}>
 					<Typography variant="body2" color="text.secondary">
 						© {new Date().getFullYear()} {profile.name}
 					</Typography>
-				</Box>
+					{total != null && (
+						<Typography variant="body2" color="text.secondary">
+							{total.toLocaleString()} {total === 1 ? "visitor" : "visitors"}
+						</Typography>
+					)}
+				</Stack>
 			</Container>
 		</>
 	);
