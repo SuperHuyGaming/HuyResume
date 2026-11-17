@@ -1,95 +1,81 @@
-// data.js — all site content lives here. Wrap a phrase in **double asterisks** to highlight it.
+// All site content lives here.
 
 export const SITE_URL = "https://bentruong.dev";
 export const RESUME_PDF = "/Huy_Truong_Resume.pdf";
 
 export const profile = {
 	name: "Huy Truong",
-	handle: "bentruong.dev",
 	title: "Software Engineer",
-	tagline: "AI agents · Full-stack · Machine learning",
-	summary:
-		"CS student at George Mason University (3.94 GPA) heading into an M.S. in Machine Learning. I build production software end to end — LLM agents that triage real bugs, event-streaming backends, and apps hundreds of students use every week.",
+	intro: [
+		"I'm a computer science student at George Mason University, starting my master's in machine learning in January 2027.",
+		"I like building things people actually use. Right now that's a court booking app for our campus badminton club and a site that helps GMU students find old syllabi. This past summer I interned at Deepiri, where I built an AI agent that helped track down production bugs.",
+	],
 	photo: "/ProfilePic.jpg",
 	email: "htruon5@gmu.edu",
 	linkedin: "https://linkedin.com/in/huy-nm-truong",
 	github: "https://github.com/SuperHuyGaming",
-	now: [
-		["role", "Founder & Lead SWE @ GMU Badminton App"],
-		["study", "B.S. CS → M.S. CS (ML) @ George Mason"],
-		["teach", "Teaching Assistant, CS Dept. (Outstanding TA)"],
-		["stack", "Python · TypeScript · Java · LangGraph"],
-	],
 };
-
-export const stats = [
-	{ value: "10K+", label: "users served by APIs I stabilized" },
-	{ value: "500+", label: "active players on my app" },
-	{ value: "150+", label: "critical bugs root-caused by AI" },
-	{ value: "3.94", label: "GPA at George Mason" },
-];
 
 export const experience = [
 	{
 		org: "Deepiri",
 		role: "Software Engineer Intern",
-		dates: "May 2026 – Aug 2026",
+		dates: "May 2026 to Aug 2026",
 		bullets: [
-			"Restored API uptime to **99.9%** for 10,000+ users by building an AI agent with **LangGraph** to triage error logs and the **OpenAI API** to root-cause 150+ critical bugs in a **Spring Boot** backend",
-			"Cut release testing from days to minutes by using the **Claude API** to write tests and **Playwright** to run them",
-			"Achieved **zero failed deployments** over 3 months with **Docker** packaging and **GitHub Actions** running tests and AI agent evaluations on every push",
-			"Raised test coverage to **85%** by adding **Jest** regression tests around all 150+ fixed bugs",
+			"Built an AI agent with LangGraph and the OpenAI API that reads error logs and finds the root cause of bugs in our Spring Boot backend. It helped us fix 150+ critical bugs and get API uptime back to 99.9% for 10,000+ users.",
+			"Used the Claude API to write tests and Playwright to run them, which cut release testing from days to minutes.",
+			"Set up Docker and GitHub Actions so tests and agent evaluations run on every push. We had zero failed deployments over three months.",
+			"Added Jest regression tests around every fixed bug and raised coverage to 85%.",
 		],
-		tech: ["LangGraph", "OpenAI API", "Claude API", "Spring Boot", "Playwright", "Docker", "GitHub Actions", "Jest"],
+		tools: "LangGraph, OpenAI API, Claude API, Spring Boot, Playwright, Docker, GitHub Actions, Jest",
 	},
 	{
 		org: "GMU Badminton App",
-		role: "Founder & Lead Software Engineer",
-		dates: "Jan 2026 – Present",
+		role: "Founder and Lead Software Engineer",
+		dates: "Jan 2026 to Present",
 		link: "https://gmubadmintonschedule.bentruong.dev/",
 		bullets: [
-			"Grew to **500+ active players** with zero double bookings — a **React** court-booking app with an ML matchmaking engine pairing doubles partners by **Glicko-2** rating",
-			"Processes **10,000+ gym events a day** by streaming them through **Kafka** and caching live court status in **Redis**",
-			"Surfaces **50+ regional tournaments** a semester by using the **Gemini API** to turn social-media flyers into structured events, stored in **MongoDB** and served via **Express.js**",
-			"Sustained **100% uptime** at peak on **Render**, with **JWT** and **bcrypt** securing 500+ accounts",
+			"Started a React court booking app for the club. It has 500+ active players and has never double booked a court.",
+			"Wrote a matchmaking engine that pairs doubles partners by Glicko-2 skill rating.",
+			"Gym events (10,000+ a day) stream through Kafka, and live court status is cached in Redis.",
+			"Use the Gemini API to turn tournament flyers from social media into events, which surfaces 50+ regional tournaments a semester.",
 		],
-		tech: ["React", "Kafka", "Redis", "MongoDB", "Express.js", "Gemini API", "Glicko-2"],
+		tools: "React, Express.js, MongoDB, Kafka, Redis, Gemini API, Render",
 	},
 	{
 		org: "George Mason University",
 		role: "Research Assistant",
-		dates: "Jun 2025 – May 2026",
+		dates: "Jun 2025 to May 2026",
 		bullets: [
-			"Helped **100+ students** fix homework errors without office hours via an AI debugging chatbot built with **Google AI Studio** and **RAG** grounded in course materials",
-			"Cut student debugging time by nearly **50%** by **A/B testing** chatbot responses with the professor and 100+ students",
-			"Covered **60%+** of student questions with step-by-step fixes by clustering logged queries with **text embeddings** and **prompt engineering** for the top 5 error types",
+			"Built a debugging chatbot for a programming course using Google AI Studio and RAG over the course materials. 100+ students used it to fix homework errors outside office hours.",
+			"A/B tested its answers with the professor and students, which cut debugging time by almost half.",
+			"Grouped logged questions with text embeddings and tuned prompts for the five most common error types, covering 60%+ of what students asked.",
 		],
-		tech: ["RAG", "Google AI Studio", "Embeddings", "Prompt Engineering", "A/B Testing"],
+		tools: "Google AI Studio, RAG, embeddings, prompt engineering",
 	},
 	{
 		org: "George Mason University",
 		role: "Teaching Assistant, Computer Science",
-		dates: "Jan 2025 – Present",
+		dates: "Jan 2025 to Present",
 		bullets: [
-			"Lead weekly labs on algorithms in **C** for 40 students, helping **80% earn an A** — recipient of the **Outstanding TA Award**",
+			"Lead weekly algorithms labs in C for 40 students. 80% of my students earned an A, and I received the Outstanding TA award.",
 		],
-		tech: ["C", "Algorithms", "Teaching"],
+		tools: "C, algorithms",
 	},
 ];
 
-// Main showcase: each gets a demo video. `live` is where "Open app" points.
+// Main projects, each with a demo video. `live` is where "Open app" points.
 export const featuredProjects = [
 	{
 		name: "Mason Badminton Connect",
-		kicker: "Founder · 500+ active players",
 		blurb:
-			"The hub for GMU badminton. Players book RAC courts without double bookings, get paired with doubles partners by a Glicko-2 matchmaking engine, and climb the leaderboard. A Gemini pipeline turns tournament flyers from social media into a searchable DMV tournament calendar.",
+			"The club's hub for open play. Players book courts at the RAC, find doubles partners, climb the leaderboard and chat in the forum. It also finds tournaments around the DC area by reading flyers posted on Instagram.",
 		highlights: [
-			"10,000+ gym events a day streamed through Kafka, live court status cached in Redis",
-			"Gemini API extracts 50+ regional tournaments a semester from flyers",
-			"Production + staging tiers on Render with CI gates; JWT + bcrypt auth",
+			"500+ active players",
+			"Matchmaking by Glicko-2 rating",
+			"Tournament finder powered by the Gemini API",
 		],
-		tech: ["React", "Express.js", "MongoDB", "Kafka", "Redis", "Gemini API", "Glicko-2"],
+		tech: ["React", "Express.js", "MongoDB", "Kafka", "Redis", "Gemini API"],
 		github: "https://github.com/SuperHuyGaming/GMU-Badminton-App",
 		live: "https://gmubadmintonschedule.bentruong.dev/",
 		video: "/videos/badminton-demo.mp4",
@@ -97,15 +83,14 @@ export const featuredProjects = [
 	},
 	{
 		name: "GMU Syllabus Searcher",
-		kicker: "1,000+ syllabi · $0/month on AWS",
 		blurb:
-			"Look up any GMU course and see which professors taught it each term since Fall 2022, with their syllabus one click away. AI summaries compare grading and topics across professors, and full-text search finds any phrase inside every syllabus.",
+			"Pick a GMU course and see every professor who taught it since Fall 2022, with their syllabus one click away. You can also search inside all the syllabi at once, for example for \"late policy\" or a textbook name.",
 		highlights: [
-			"Python scrapers pulled 1,000+ syllabi; students upload the missing ones",
-			"Azure AI Document Intelligence + Gemini tag and check uploads for one-click approval",
-			"React on S3 + CloudFront, Node.js on Lambda, DynamoDB single-table design",
+			"1,000+ syllabi, collected with Python scrapers",
+			"Student uploads checked with Azure AI and Gemini before an admin approves them",
+			"Runs on AWS Lambda, DynamoDB and CloudFront for $0 a month",
 		],
-		tech: ["Python", "React", "Node.js", "AWS Lambda", "DynamoDB", "CloudFront", "Supabase", "Azure AI"],
+		tech: ["Python", "React", "Node.js", "AWS Lambda", "DynamoDB", "Supabase"],
 		github: "https://github.com/SuperHuyGaming/Syllabus-Searcher",
 		live: "https://findmysyllabus.bentruong.dev/",
 		video: "/videos/syllabus-demo.mp4",
@@ -113,41 +98,26 @@ export const featuredProjects = [
 	},
 ];
 
-export const aiProjects = [
+export const otherProjects = [
 	{
 		name: "C Error Tutor",
-		status: "In progress",
+		note: "In progress",
 		blurb:
-			"Fine-tuning a small open model with LoRA to explain and fix beginner C compile errors, benchmarked against API models on ~7,000 real student programs from DeepFix. The main metric: does the suggested fix compile?",
-		tech: ["PyTorch", "LoRA", "Transformers", "gcc", "Pandas"],
+			"Fine-tuning a small open model with LoRA to explain and fix beginner C compile errors, and testing it on about 7,000 real student programs. The question I'm trying to answer: can a small, cheap model keep up with the big API models?",
+		tech: ["PyTorch", "LoRA", "Transformers"],
 	},
 	{
-		name: "AI Bug-Triage Agent",
-		status: "Deepiri",
+		name: "Tournament Flyer Reader",
+		note: "Open source",
 		blurb:
-			"A LangGraph agent that reads production error logs, groups them, and uses the OpenAI API to root-cause bugs in a Spring Boot backend — 150+ critical bugs fixed and uptime restored to 99.9%.",
-		tech: ["LangGraph", "OpenAI API", "Spring Boot", "Claude API"],
-	},
-	{
-		name: "AI Debugging Tutor",
-		status: "GMU Research",
-		blurb:
-			"A course chatbot that explains students' homework errors, grounded in course materials with RAG. Clustering logged questions with embeddings shaped prompts for the 5 most common error types and cut debugging time by ~50%.",
-		tech: ["RAG", "Embeddings", "Google AI Studio", "A/B Testing"],
-	},
-	{
-		name: "Tournament Flyer Extraction",
-		status: "Open source",
-		blurb:
-			"An event-driven pipeline that scrapes collegiate badminton Instagram accounts and uses multimodal LLM vision to turn flyers into validated, geocoded tournament records, with self-healing schema retries.",
-		tech: ["GPT-4o Vision", "Pydantic", "Kafka", "Spring Boot", "MongoDB"],
+			"Scrapes college badminton Instagram accounts and uses a vision model to turn tournament flyers into clean, mapped event listings.",
+		tech: ["Python", "GPT-4o", "Kafka", "Spring Boot"],
 		github: "https://github.com/SuperHuyGaming/badminton-tournament-finder",
 	},
 	{
 		name: "Handwritten Digit Classifier",
-		status: "ML",
-		blurb:
-			"A PyTorch multi-layer perceptron that reads handwritten digits with 98% accuracy, fed by a scikit-learn + Pandas pipeline that loads, normalizes and splits the image data.",
+		note: "Class project",
+		blurb: "A small PyTorch neural network that reads handwritten digits with 98% accuracy.",
 		tech: ["PyTorch", "scikit-learn", "Pandas"],
 	},
 ];
@@ -155,53 +125,43 @@ export const aiProjects = [
 export const skills = [
 	{ group: "Languages", items: ["Python", "Java", "C", "JavaScript", "SQL"] },
 	{
-		group: "AI / ML",
-		items: ["LLMs", "AI Agents", "RAG", "LangGraph", "OpenAI API", "Claude API", "Gemini API", "Prompt Engineering", "Embeddings", "PyTorch", "scikit-learn", "Pandas", "NumPy", "OpenCV"],
+		group: "AI and ML",
+		items: ["LLM agents", "RAG", "LangGraph", "OpenAI API", "Claude API", "Gemini API", "Embeddings", "PyTorch", "scikit-learn", "Pandas", "NumPy", "OpenCV"],
 	},
 	{
-		group: "Frameworks & Tools",
-		items: ["Next.js", "React", "Node.js", "Express.js", "Spring Boot", "Docker", "GitHub Actions", "Playwright", "Jest"],
+		group: "Web and tools",
+		items: ["React", "Next.js", "Node.js", "Express.js", "Spring Boot", "Docker", "GitHub Actions", "Playwright", "Jest"],
 	},
 	{
-		group: "Data & Cloud",
-		items: ["MongoDB", "DynamoDB", "Supabase", "Redis", "Apache Kafka", "REST APIs", "AWS Lambda", "S3", "CloudFront", "Render", "Azure"],
+		group: "Data and cloud",
+		items: ["MongoDB", "DynamoDB", "Supabase", "Redis", "Kafka", "AWS (Lambda, S3, CloudFront)", "Render", "Azure"],
 	},
 ];
 
 export const education = [
 	{
-		school: "George Mason University",
-		degree: "M.S. Computer Science — Machine Learning",
-		dates: "Jan 2027 – Present",
+		degree: "M.S. in Computer Science, Machine Learning concentration",
+		dates: "Starting Jan 2027",
 	},
 	{
-		school: "George Mason University",
-		degree: "B.S. Computer Science, Minor in Software Engineering",
-		dates: "Aug 2023 – Dec 2026",
+		degree: "B.S. in Computer Science, minor in Software Engineering",
+		dates: "Aug 2023 to Dec 2026",
 		note: "GPA 3.94",
 	},
 ];
 
 export const coursework = [
-	"Data Structures & Algorithms",
+	"Data Structures and Algorithms",
 	"Machine Learning",
 	"Large Language Models",
 	"Artificial Intelligence",
 	"Operating Systems",
 	"Databases",
 	"Software Engineering",
-	"Object-Oriented Programming",
 ];
 
 export const leadership = [
-	{
-		role: "President",
-		org: "Vietnamese Student Association",
-		detail: "Events for 200+ students, $10K in sponsorships",
-	},
-	{
-		role: "Event Organizer",
-		org: "PatriotHacks",
-		detail: "GMU's largest hackathon — 600+ hackers, $30K in sponsorships",
-	},
+	"President of the Vietnamese Student Association. We run events for 200+ students and raised $10K in sponsorships.",
+	"Event organizer for PatriotHacks, GMU's largest hackathon, with 600+ hackers and $30K in sponsorships.",
+	"Outstanding TA award from the GMU Computer Science department.",
 ];

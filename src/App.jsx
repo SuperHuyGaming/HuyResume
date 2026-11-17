@@ -32,7 +32,7 @@ export default function App() {
 		try {
 			localStorage.setItem(STORAGE_KEY, next);
 		} catch {
-			/* storage unavailable — keep in memory only */
+			/* storage unavailable, keep in memory only */
 		}
 	};
 
@@ -43,7 +43,6 @@ export default function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<div className="bg-grid" aria-hidden />
 			<NavBar mode={mode} onToggleMode={toggleMode} />
 			<Box component="main" sx={{ position: "relative" }}>
 				<Hero />
