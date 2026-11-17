@@ -46,7 +46,7 @@ export const experience = [
 		org: "GMU Badminton App",
 		role: "Founder & Lead Software Engineer",
 		dates: "Jan 2026 – Present",
-		link: "https://gmu-badminton-openplayschedule.onrender.com/",
+		link: "https://gmubadmintonschedule.bentruong.dev/",
 		bullets: [
 			"Grew to **500+ active players** with zero double bookings — a **React** court-booking app with an ML matchmaking engine pairing doubles partners by **Glicko-2** rating",
 			"Processes **10,000+ gym events a day** by streaming them through **Kafka** and caching live court status in **Redis**",
@@ -91,7 +91,7 @@ export const featuredProjects = [
 		],
 		tech: ["React", "Express.js", "MongoDB", "Kafka", "Redis", "Gemini API", "Glicko-2"],
 		github: "https://github.com/SuperHuyGaming/GMU-Badminton-App",
-		live: "https://gmu-badminton-openplayschedule.onrender.com/",
+		live: "https://gmubadmintonschedule.bentruong.dev/",
 		video: "/videos/badminton-demo.mp4",
 		poster: "/videos/badminton-poster.jpg",
 	},
