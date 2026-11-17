@@ -1,105 +1,72 @@
-// Contact.jsx
 import React from "react";
-import { Stack, Card, CardContent, Typography, Link } from "@mui/material";
-import EmailIcon from "@mui/icons-material/Email";
+import { Box, Container, Paper, Typography, Stack, Button, Divider, Link } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import MailOutline from "@mui/icons-material/MailOutline";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import Section from "./Section";
+import DescriptionOutlined from "@mui/icons-material/DescriptionOutlined";
+import { mono } from "../theme";
+import { profile, RESUME_PDF } from "../data";
 
 export default function Contact() {
 	return (
-		<Section id="contact" title="Contact" space={2}>
-			<Stack direction={{ xs: "column", md: "row" }} spacing={2}>
-				<Card
+		<Box component="section" id="contact" sx={{ py: { xs: 7, md: 10 }, position: "relative" }}>
+			<Container maxWidth="md">
+				<Paper
 					elevation={0}
-					sx={{
-						flex: 1,
-						border: "1px solid rgba(15,23,42,0.08)",
-						background: "rgba(255,255,255,0.6)",
-					}}
+					sx={(t) => ({
+						p: { xs: 3.5, md: 6 },
+						textAlign: "center",
+						position: "relative",
+						overflow: "hidden",
+						bgcolor: alpha(t.palette.background.paper, 0.8),
+						borderColor: alpha(t.palette.secondary.main, 0.35),
+						backgroundImage: `radial-gradient(600px 240px at 50% -20%, ${alpha(t.palette.primary.main, 0.18)}, transparent 70%)`,
+					})}
 				>
-					<CardContent>
-						<Typography
-							gutterBottom
-							sx={{
-								display: "flex",
-								alignItems: "center",
-								gap: 1,
-								fontWeight: 700,
-							}}
-						>
-							<EmailIcon fontSize="small" /> Email
-						</Typography>
-						<Link href="mailto:htruon5@gmu.edu">
-							htruon5@gmu.edu
-						</Link>
-					</CardContent>
-				</Card>
-
-				<Card
-					elevation={0}
-					sx={{
-						flex: 1,
-						border: "1px solid rgba(15,23,42,0.08)",
-						background: "rgba(255,255,255,0.6)",
-					}}
-				>
-					<CardContent>
-						<Typography
-							gutterBottom
-							sx={{
-								display: "flex",
-								alignItems: "center",
-								gap: 1,
-								fontWeight: 700,
-							}}
-						>
+					<Typography sx={{ fontFamily: mono, fontSize: 13, color: "secondary.main", mb: 1.5 }}>
+						05 / contact
+					</Typography>
+					<Typography variant="h2" sx={{ fontSize: { xs: "2rem", md: "2.9rem" } }}>
+						Let's build something.
+					</Typography>
+					<Typography color="text.secondary" sx={{ mt: 2, maxWidth: 520, mx: "auto" }}>
+						Open to software engineering and AI/ML internships and new-grad roles. My inbox is always open —
+						for opportunities, collaborations, or a badminton match.
+					</Typography>
+					<Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} justifyContent="center" sx={{ mt: 4 }}>
+						<Button variant="contained" size="large" href={`mailto:${profile.email}`} startIcon={<MailOutline />}>
+							{profile.email}
+						</Button>
+						<Button variant="outlined" color="secondary" size="large" href={RESUME_PDF} target="_blank" startIcon={<DescriptionOutlined />}>
+							Download résumé
+						</Button>
+					</Stack>
+					<Stack direction="row" spacing={3} justifyContent="center" sx={{ mt: 3 }}>
+						<Link href={profile.linkedin} target="_blank" rel="noreferrer" color="text.secondary" sx={{ display: "inline-flex", alignItems: "center", gap: 0.75 }}>
 							<LinkedInIcon fontSize="small" /> LinkedIn
-						</Typography>
-						<Link
-							href="https://linkedin.com/in/huy-nm-truong"
-							target="_blank"
-							rel="noreferrer"
-						>
-							linkedin.com/in/huy-nm-truong
 						</Link>
-					</CardContent>
-				</Card>
-
-				<Card
-					elevation={0}
-					sx={{
-						flex: 1,
-						border: "1px solid rgba(15,23,42,0.08)",
-						background: "rgba(255,255,255,0.6)",
-					}}
-				>
-					<CardContent>
-						<Typography
-							gutterBottom
-							sx={{
-								display: "flex",
-								alignItems: "center",
-								gap: 1,
-								fontWeight: 700,
-							}}
-						>
+						<Link href={profile.github} target="_blank" rel="noreferrer" color="text.secondary" sx={{ display: "inline-flex", alignItems: "center", gap: 0.75 }}>
 							<GitHubIcon fontSize="small" /> GitHub
-						</Typography>
-						<Link
-							href="https://github.com/SuperHuyGaming"
-							target="_blank"
-							rel="noreferrer"
-						>
-							github.com/SuperHuyGaming
 						</Link>
-					</CardContent>
-				</Card>
-			</Stack>
+					</Stack>
+				</Paper>
+			</Container>
 
-			<Typography variant="body2" color="text.secondary" sx={{ mt: 4 }}>
-				© {new Date().getFullYear()} Huy Truong
-			</Typography>
-		</Section>
+			<Container maxWidth="lg" sx={{ mt: { xs: 7, md: 10 } }}>
+				<Divider />
+				<Stack
+					direction={{ xs: "column", sm: "row" }}
+					justifyContent="space-between"
+					spacing={1}
+					sx={{ py: 3, fontFamily: mono, fontSize: 12, color: "text.secondary" }}
+				>
+					<span>© {new Date().getFullYear()} {profile.name}</span>
+					<span>
+						built with React + MUI · <Box component="span" sx={{ color: "secondary.main" }}>{profile.handle}</Box>
+					</span>
+				</Stack>
+			</Container>
+		</Box>
 	);
 }

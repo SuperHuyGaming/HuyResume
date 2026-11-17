@@ -1,103 +1,92 @@
-// Projects.jsx
 import React from "react";
-import {
-	Box,
-	Typography,
-	Grid,
-	Card,
-	CardContent,
-	CardActions,
-	Button,
-	Chip,
-} from "@mui/material";
+import { Grid, Paper, Typography, Stack, Chip, Button, Box } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import Launch from "@mui/icons-material/Launch";
+import FolderOutlined from "@mui/icons-material/FolderOutlined";
 import Section from "./Section";
+import { mono } from "../theme";
+import { projects, profile } from "../data";
 
-const ALL_PROJECTS = [
-	{
-		name: "NOVA Bookstore",
-		desc: "Full-stack MERN bookstore app with React Router navigation, Express APIs, and MongoDB persistence.",
-		image: "your_image_link_here",
-		links: [{ label: "GitHub", href: "#" }],
-	},
-	{
-		name: "NVIS Club Website",
-		desc: "Responsive React website with secure authentication, CRUD posts/comments, deployed on Render.",
-		image: "your_image_link_here",
-		links: [
-			{ label: "Live Demo", href: "https://nvis-frontend.onrender.com/" },
-		],
-	},
-	{
-		name: "Appointment Scheduling System",
-		desc: "Java OOP system using HashMaps for O(1) lookups, CSV persistence, and efficient appointment management.",
-		image: "your_image_link_here",
-		links: [{ label: "GitHub", href: "#" }],
-	},
-];
-
-export default function Projects({ limit }) {
-	const projects =
-		typeof limit === "number" ? ALL_PROJECTS.slice(0, limit) : ALL_PROJECTS;
-
+function ProjectCard({ p }) {
 	return (
-		<Section id="projects" title="Projects" space={2}>
-			<Grid container spacing={2}>
-				{projects.map((p, idx) => (
-					<Grid item xs={12} md={6} key={idx}>
-						<Card
-							elevation={0}
-							sx={{
-								height: "100%",
-								border: "1px solid rgba(15,23,42,0.08)",
-								background: "rgba(255,255,255,0.6)",
-								position: "relative",
-								overflow: "hidden",
-							}}
-						>
-							<CardContent sx={{ pt: 1.5, pb: 1, px: 1.5 }}>
-								{p.image && (
-									<img
-										src={p.image}
-										alt={p.name}
-										style={{
-											width: "100%",
-											maxHeight: 160,
-											objectFit: "cover",
-											borderRadius: 8,
-											marginBottom: 10,
-										}}
-									/>
-								)}
-								<Typography
-									variant="h6"
-									sx={{ fontWeight: 800, mb: 0.25 }}
-								>
-									{p.name}
-								</Typography>
-								<Typography
-									color="text.secondary"
-									variant="body2"
-								>
-									{p.desc}
-								</Typography>
-							</CardContent>
-							<CardActions sx={{ pt: 0, px: 1.5, pb: 1.25 }}>
-								{p.links.map((l, i) => (
-									<Button
-										key={i}
-										size="small"
-										href={l.href}
-										target="_blank"
-										rel="noreferrer"
-									>
-										{l.label}
-									</Button>
-								))}
-							</CardActions>
-						</Card>
+		<Paper
+			elevation={0}
+			sx={(t) => ({
+				height: "100%",
+				p: { xs: 2.5, md: 3.5 },
+				display: "flex",
+				flexDirection: "column",
+				position: "relative",
+				overflow: "hidden",
+				bgcolor: alpha(t.palette.background.paper, 0.7),
+				backdropFilter: "blur(6px)",
+				transition: "transform .25s, border-color .25s, box-shadow .25s",
+				"&::before": {
+					content: '""',
+					position: "absolute",
+					inset: "0 0 auto 0",
+					height: "2px",
+					background: `linear-gradient(90deg, ${t.palette.primary.main}, ${t.palette.secondary.main})`,
+					opacity: p.featured ? 1 : 0.4,
+				},
+				"&:hover": {
+					transform: "translateY(-4px)",
+					borderColor: alpha(t.palette.secondary.main, 0.5),
+					boxShadow: `0 18px 40px -20px ${alpha(t.palette.primary.main, 0.45)}`,
+				},
+			})}
+		>
+			<Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
+				<FolderOutlined sx={{ color: "secondary.main", fontSize: 32 }} />
+				{p.featured && (
+					<Typography sx={{ fontFamily: mono, fontSize: 12, color: "secondary.main" }}>★ featured</Typography>
+				)}
+			</Stack>
+			<Typography variant="h4" component="h3" sx={{ fontSize: { xs: "1.45rem", md: "1.7rem" }, mb: 1 }}>
+				{p.name}
+			</Typography>
+			<Typography color="text.secondary" sx={{ flex: 1, fontSize: "0.95rem" }}>
+				{p.blurb}
+			</Typography>
+			<Stack direction="row" sx={{ flexWrap: "wrap", gap: 0.75, mt: 2.5 }}>
+				{p.tech.map((t) => (
+					<Chip key={t} label={t} size="small" sx={(th) => ({ bgcolor: alpha(th.palette.primary.main, 0.12), color: "primary.main" })} />
+				))}
+			</Stack>
+			{(p.github || p.live) && (
+				<Stack direction="row" spacing={1} sx={{ mt: 2.5 }}>
+					{p.github && (
+						<Button size="small" href={p.github} target="_blank" rel="noreferrer" startIcon={<GitHubIcon />} sx={{ color: "text.primary" }}>
+							Code
+						</Button>
+					)}
+					{p.live && (
+						<Button size="small" color="secondary" href={p.live} target="_blank" rel="noreferrer" startIcon={<Launch />}>
+							Live
+						</Button>
+					)}
+				</Stack>
+			)}
+		</Paper>
+	);
+}
+
+export default function Projects() {
+	return (
+		<Section id="projects" index="02" label="projects" title="Things I've built">
+			<Grid container spacing={3}>
+				{projects.map((p) => (
+					<Grid key={p.name} size={{ xs: 12, md: 6 }}>
+						<ProjectCard p={p} />
 					</Grid>
 				))}
 			</Grid>
+			<Box sx={{ textAlign: "center", mt: 5 }}>
+				<Button variant="outlined" color="secondary" href={profile.github} target="_blank" rel="noreferrer" startIcon={<GitHubIcon />}>
+					More on GitHub
+				</Button>
+			</Box>
 		</Section>
 	);
 }
