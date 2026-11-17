@@ -1,6 +1,6 @@
 // data.js — all site content lives here. Wrap a phrase in **double asterisks** to highlight it.
 
-export const SITE_URL = "https://bentruong.dev";
+export const SITE_URL = "https://www.bentruong.dev";
 export const RESUME_PDF = "/Huy_Truong_Resume.pdf";
 
 export const profile = {
