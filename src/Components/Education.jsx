@@ -1,48 +1,63 @@
 import React from "react";
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Typography, Stack, Grid } from "@mui/material";
 import Section from "./Section";
-import { education, coursework, leadership } from "../data";
+import Reveal from "./Reveal";
+import { education, leadership } from "../data";
+
+const Label = ({ children }) => (
+	<Typography variant="overline" sx={{ color: "secondary.main", fontWeight: 700, letterSpacing: "0.1em" }}>
+		{children}
+	</Typography>
+);
 
 export default function Education() {
 	return (
-		<Section id="education" title="Education">
-			<Typography variant="h6" component="h3">
-				George Mason University
-			</Typography>
-			<Stack spacing={1} sx={{ mt: 1.5 }}>
-				{education.map((e) => (
-					<Stack key={e.degree} direction={{ xs: "column", sm: "row" }} justifyContent="space-between" spacing={0.5}>
-						<Typography>
-							{e.degree}
-							{e.note && (
-								<Box component="span" sx={{ color: "text.secondary" }}>
-									{` (${e.note})`}
-								</Box>
-							)}
+		<Section id="education" index="03" title="Education">
+			<Grid container spacing={{ xs: 5, md: 8 }}>
+				<Grid size={{ xs: 12, md: 7 }}>
+					<Reveal>
+						<Typography sx={{ fontWeight: 800, fontSize: { xs: "1.4rem", md: "1.7rem" }, letterSpacing: "-0.02em" }}>
+							George Mason University
 						</Typography>
-						<Typography variant="body2" color="text.secondary" sx={{ flexShrink: 0 }}>
-							{e.dates}
-						</Typography>
+					</Reveal>
+					<Stack sx={{ mt: 2 }}>
+						{education.map((e, i) => (
+							<Reveal key={e.degree} delay={100 + i * 100}>
+								<Stack
+									direction="row"
+									justifyContent="space-between"
+									spacing={2}
+									sx={{ py: 1.5, borderTop: 1, borderColor: "divider" }}
+								>
+									<Box>
+										<Typography sx={{ fontWeight: 600 }}>{e.degree}</Typography>
+										{e.note && (
+											<Typography variant="body2" color="text.secondary">
+												{e.note}
+											</Typography>
+										)}
+									</Box>
+									<Typography variant="body2" color="text.secondary" sx={{ flexShrink: 0, pt: 0.3 }}>
+										{e.dates}
+									</Typography>
+								</Stack>
+							</Reveal>
+						))}
 					</Stack>
-				))}
-			</Stack>
-			<Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-				<Box component="span" sx={{ color: "text.primary", fontWeight: 600 }}>
-					Coursework:
-				</Box>{" "}
-				{coursework.join(", ")}
-			</Typography>
-
-			<Typography variant="h6" component="h3" sx={{ mt: 5 }}>
-				Leadership and awards
-			</Typography>
-			<Box component="ul" sx={{ m: 0, mt: 1.5, pl: 2.5, "& li": { mb: 0.75 } }}>
-				{leadership.map((l) => (
-					<Typography key={l} component="li" color="text.secondary">
-						{l}
-					</Typography>
-				))}
-			</Box>
+				</Grid>
+				<Grid size={{ xs: 12, md: 5 }}>
+					<Reveal delay={150}>
+						<Label>Leadership</Label>
+						<Stack sx={{ mt: 1 }}>
+							{leadership.map((l) => (
+								<Typography key={l} sx={{ py: 1.25, borderTop: 1, borderColor: "divider" }}>
+									{l}
+								</Typography>
+							))}
+						</Stack>
+					</Reveal>
+				</Grid>
+			</Grid>
 		</Section>
 	);
 }

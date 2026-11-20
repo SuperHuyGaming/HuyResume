@@ -2,8 +2,234 @@ section[id] {
 	scroll-margin-top: 72px;
 }
 
+::selection {
+	background: rgba(76, 195, 138, 0.3);
+}
+
+/* Scroll reveal */
+.reveal {
+	opacity: 0;
+	transform: translateY(20px);
+	transition:
+		opacity 0.7s ease,
+		transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+	will-change: opacity, transform;
+}
+.reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+/* Letters sliding up out of a mask */
+.split-word {
+	display: inline-block;
+	white-space: nowrap;
+}
+.split-mask {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+	padding-bottom: 0.12em;
+	margin-bottom: -0.12em;
+}
+.split-char {
+	display: inline-block;
+	transform: translate3d(0, 110%, 0) rotate(6deg);
+	transform-origin: left bottom;
+	transition: transform 0.9s cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+.split.is-visible .split-char {
+	transform: none;
+}
+
+/* Section rule draws in from the left */
+.reveal .rule {
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s;
+}
+.reveal.is-visible .rule {
+	transform: none;
+}
+
+/* Custom cursor (mouse and trackpad only) */
+.has-cursor,
+.has-cursor * {
+	cursor: none !important;
+}
+.cursor-dot,
+.cursor-ring {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 2000;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+.cursor-visible .cursor-dot,
+.cursor-visible .cursor-ring {
+	opacity: 1;
+}
+.cursor-dot {
+	width: 6px;
+	height: 6px;
+	margin: -3px 0 0 -3px;
+	border-radius: 50%;
+	background: #4cc38a;
+}
+.cursor-ring {
+	width: 36px;
+	height: 36px;
+	margin: -18px 0 0 -18px;
+}
+.cursor-ring-inner {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 1.5px solid rgba(76, 195, 138, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition:
+		transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+		background-color 0.3s ease,
+		border-color 0.3s ease;
+}
+.cursor-ring.is-hover .cursor-ring-inner {
+	transform: scale(1.6);
+	background: rgba(76, 195, 138, 0.12);
+	border-color: rgba(76, 195, 138, 0.9);
+}
+.cursor-ring.has-label .cursor-ring-inner {
+	transform: scale(2.3);
+	background: #4cc38a;
+	border-color: #4cc38a;
+}
+.cursor-ring.is-down .cursor-ring-inner {
+	transform: scale(0.8);
+}
+.cursor-label {
+	font: 600 6px/1 Inter, system-ui, sans-serif;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #06120c;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+.cursor-ring.has-label .cursor-label {
+	opacity: 1;
+}
+[data-theme="light"] .cursor-dot {
+	background: #0b5d3b;
+}
+[data-theme="light"] .cursor-ring-inner {
+	border-color: rgba(11, 93, 59, 0.5);
+}
+[data-theme="light"] .cursor-ring.is-hover .cursor-ring-inner {
+	background: rgba(11, 93, 59, 0.08);
+	border-color: rgba(11, 93, 59, 0.9);
+}
+[data-theme="light"] .cursor-ring.has-label .cursor-ring-inner {
+	background: #0b5d3b;
+	border-color: #0b5d3b;
+}
+[data-theme="light"] .cursor-label {
+	color: #fff;
+}
+
+/* Skills marquee */
+@keyframes bt-marquee {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+.marquee-row {
+	animation: bt-marquee 70s linear infinite;
+}
+.marquee-row.reverse {
+	animation-direction: reverse;
+	animation-duration: 85s;
+	animation-delay: -30s;
+}
+.marquee-row:has(> :hover) {
+	animation-play-state: paused;
+}
+
+/* Scroll cue under the hero */
+@keyframes bt-scroll-cue {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(300%);
+	}
+}
+.scroll-cue {
+	animation: bt-scroll-cue 1.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+.timeline-fill {
+	transition: transform 0.15s linear;
+}
+
+@keyframes bt-float {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+	50% {
+		transform: translate3d(30px, -24px, 0) scale(1.08);
+	}
+}
+
+@keyframes bt-pulse {
+	0% {
+		box-shadow: 0 0 0 0 var(--pulse-color, rgba(76, 195, 138, 0.55));
+	}
+	70% {
+		box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
+.bt-blob {
+	animation: bt-float 16s ease-in-out infinite;
+}
+.bt-blob.alt {
+	animation-duration: 21s;
+	animation-direction: reverse;
+}
+.bt-pulse {
+	animation: bt-pulse 2s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto !important;
+	}
+	/* Fades instead of slides */
+	.reveal {
+		transform: none;
+		transition: opacity 0.6s ease;
+	}
+	.split-char {
+		transform: none;
+		opacity: 0;
+		transition: opacity 0.5s ease;
+	}
+	.split.is-visible .split-char {
+		opacity: 1;
+	}
+	.marquee-row {
+		animation-duration: 120s;
+	}
+	.marquee-row.reverse {
+		animation-duration: 140s;
 	}
 }

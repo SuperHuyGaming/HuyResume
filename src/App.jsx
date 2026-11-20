@@ -5,8 +5,12 @@ import NavBar from "./Components/NavBar";
 import Hero from "./Components/Hero";
 import Experience from "./Components/Experience";
 import Projects from "./Components/Projects";
-import Skills from "./Components/Skills";
 import Education from "./Components/Education";
+import Marquee from "./Components/Marquee";
+import Cursor from "./Components/Cursor";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
+import { prefersReducedMotion } from "./motion";
 import Contact from "./Components/Contact";
 
 const STORAGE_KEY = "bt-color-mode";
@@ -36,6 +40,13 @@ export default function App() {
 		}
 	};
 
+	// Smooth, eased scrolling for wheel and anchor links (skipped with reduced motion).
+	React.useEffect(() => {
+		if (prefersReducedMotion()) return;
+		const lenis = new Lenis({ autoRaf: true, lerp: 0.1, anchors: { offset: -16 } });
+		return () => lenis.destroy();
+	}, []);
+
 	React.useEffect(() => {
 		document.documentElement.dataset.theme = mode;
 	}, [mode]);
@@ -43,12 +54,13 @@ export default function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
+			<Cursor />
 			<NavBar mode={mode} onToggleMode={toggleMode} />
 			<Box component="main" sx={{ position: "relative" }}>
 				<Hero />
-				<Experience />
 				<Projects />
-				<Skills />
+				<Marquee />
+				<Experience />
 				<Education />
 				<Contact />
 			</Box>
