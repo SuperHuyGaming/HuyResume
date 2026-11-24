@@ -26,8 +26,8 @@ export const featuredProjects = [
 		poster: "/videos/badminton-poster.jpg",
 	},
 	{
-		name: "GMU Syllabus Searcher",
-		blurb: "Every GMU syllabus since Fall 2022 in one place, with full text search.",
+		name: "Syllabus Searcher",
+		blurb: "Course syllabi across schools since Fall 2022 in one place, with full text search.",
 		metric: "1,000+ syllabi",
 		tech: ["React", "Python", "AWS Lambda", "DynamoDB", "Supabase"],
 		github: "https://github.com/SuperHuyGaming/Syllabus-Searcher",
